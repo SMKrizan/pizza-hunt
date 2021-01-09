@@ -17,7 +17,26 @@ const PizzaSchema = new Schema({
         default: 'Large'
     },
     // one could also specify "Array" as a data "type" in place of the square brackets
-    toppings: []
+    toppings: [],
+    comments: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
+    ]
+},
+    {
+        toJSON: {
+            virtuals: true
+        },
+        // this is a property that Mongoose returns, and it is not needed
+        id: false
+    }
+);
+
+// get total amount of comments and replies on retrieval
+PizzaSchema.virtual('commentCount').get(function () {
+    return this.comments.length;
 });
 
 // create Pizza model using the PizzaSchema
