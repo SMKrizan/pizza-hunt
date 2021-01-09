@@ -1,5 +1,6 @@
 // 'Schema' constructor and 'model' function come from the Mongoose library
 const { Schema, model } = require('mongoose')
+const dateFormat = require('../utils/dateFormat');
 
 const PizzaSchema = new Schema({
     pizzaName: {
@@ -10,7 +11,9 @@ const PizzaSchema = new Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        // formats the createAt field using dateFormat() every time a pizza is retrieved
+        get: (createdAtVal) => dateFormat(createdAtVal)
     },
     size: {
         type: String,
@@ -27,7 +30,8 @@ const PizzaSchema = new Schema({
 },
     {
         toJSON: {
-            virtuals: true
+            virtuals: true,
+            getters: true
         },
         // this is a property that Mongoose returns, and it is not needed
         id: false

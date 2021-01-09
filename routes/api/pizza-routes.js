@@ -19,7 +19,7 @@ router
 router
     .route('/:id')
     .get(getPizzaById)
-    .put(createPizza)
+    .put(updatePizza)
     .delete(deletePizza);
 
     module.exports = router;
