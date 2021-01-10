@@ -7,23 +7,22 @@ const {
     removeReply
 } = require('../../controllers/comment-controller');
 
-// Set up POST route at /api/comments/:pizzaId
+// Set up comment POST route at /api/comments/:pizzaId
 router
     .route('/:pizzaId')
     .post(addComment);
 
-// Set up POST route at /api/comments/:pizzaId/:commentId
+// Set up reply PUT route at /api/comments/:pizzaId/:commentId
 router
     .route('/:pizzaId/:commentId')
     .put(addReply)
-    .delete(removeComment);
 
-// Set up DELETE route at /api/comments/:pizzaId/:commentId    
+// Set up comment DELETE route at /api/comments/:pizzaId/:commentId    
 router
     .route('/:pizzaId/:commentId')
     .delete(removeComment);
 
-// Set up DELETE route at /api/comments/:pizzaId/:commentId/:replyId
+// Set up reply DELETE route at /api/comments/:pizzaId/:commentId/:replyId
 router
     .route('/:pizzId/:commentId/:replyId')
     .delete(removeReply);
