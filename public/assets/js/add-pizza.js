@@ -38,7 +38,7 @@ const handleAddTopping = event => {
 
 const handlePizzaSubmit = event => {
   event.preventDefault();
-  // debugger
+  
   const pizzaName = $pizzaForm.querySelector('#pizza-name').value;
   const createdBy = $pizzaForm.querySelector('#created-by').value;
   const size = $pizzaForm.querySelector('#pizza-size').value;
