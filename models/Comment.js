@@ -6,13 +6,17 @@ const replySchema = new Schema({
     // sets custom id to avoid confusion with parent comment _id
     replyId: {
         type: Schema.Types.ObjectId,
-        default: () => new Types.ObjectId()
+        default: () => new Types.ObjectId(),
     },
     replyBody: {
-        type: String
+        type: String,
+        required: "Please enter your reply.",
+        trim: true
     },
     writtenBy: {
-        type: String
+        type: String,
+        required: "Please enter a name for your reply.",
+        trim: true
     },
     createdAt: {
         type: Date,
@@ -30,15 +34,19 @@ const replySchema = new Schema({
 
 const commentSchema = new Schema({
     writtenBy: {
-        type: String
+        type: String,
+        required: "Please enter a name for your reply.",
+        trim: true
     },
     commentBody: {
-        type: String
+        type: String,
+        required: "Please enter a comment.",
+        trim: true
     },
     createdAt: {
         type: Date,
         default: Date.now,
-        get: createdAtVal => dateFormat(createdAtVal)
+        get: createdAtVal => dateFormat(createdAtVal),
     },
     // replies will be nested directly within comment's document, rather than being referred to
     replies: [replySchema]

@@ -9,7 +9,7 @@ const commentController = {
                     { _id: params.pizzaId },
                     // MongoDB uses'$' to indicate a built-in function; ('push' works the same as the JS method push())
                     { $push: { comments: _id } },
-                    { new: true }
+                    { new: true, runValidators: true }
                 );
             })
             .then(dbPizzaData => {
@@ -46,7 +46,7 @@ const commentController = {
         Comment.findOneAndUpdate(
             { _id: params.commentId },
             { $push: { replies: body } },
-            { new: true }
+            { new: true, runValidators: true }
         )
             .then(dbPizzaData => {
                 if (!dbPizzaData) {

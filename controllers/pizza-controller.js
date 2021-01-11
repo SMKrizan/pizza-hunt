@@ -51,8 +51,8 @@ const pizzaController = {
 
     // callback for PUT /api/pizzas/:id
     updatePizza ({ params, body }, res) {
-        // instructing Mongoose to return the new version of the document (it would otherwise return the original doc)
-        Pizza.findOneAndUpdate({ _id: params.id }, body, { new: true })
+        // instructing Mongoose to return the new version of the document (it would otherwise return the original doc); in addition, runValidators indicates that any new information needs to be validated using settings found in the models(?)
+        Pizza.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
         .then(dbPizzaData => {
             if (!dbPizzaData) {
                 res.status(400).json({ message: 'No pizza found with this id' });
