@@ -33,7 +33,7 @@ const PizzaSchema = new Schema({
             virtuals: true,
             getters: true
         },
-        // this is a property that Mongoose returns, and it is not needed
+        // this is a property that Mongoose would return, but it is not needed
         id: false
     }
 );
