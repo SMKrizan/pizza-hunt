@@ -24,7 +24,7 @@ router
 
 // Set up reply DELETE route at /api/comments/:pizzaId/:commentId/:replyId
 router
-    .route('/:pizzId/:commentId/:replyId')
+    .route('/:pizzaId/:commentId/:replyId')
     .delete(removeReply);
 
 module.exports = router;
